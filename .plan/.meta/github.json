@@ -3,9 +3,25 @@
   "repo_url": "https://github.com/JimmyMcBride/DwemerForge",
   "default_branch": "main",
   "last_enabled_at": "2026-04-30T03:40:41Z",
-  "last_updated_at": "2026-04-30T03:50:19Z",
+  "last_updated_at": "2026-04-30T04:10:30Z",
   "stories": {},
   "planning": {
+    "add-path-aware-web-deploy-and-desktop-release-workflow-skeletons": {
+      "slug": "add-path-aware-web-deploy-and-desktop-release-workflow-skeletons",
+      "kind": "spec",
+      "title": "Add path-aware web deploy and desktop release workflow skeletons",
+      "issue_number": 5,
+      "issue_url": "https://github.com/JimmyMcBride/DwemerForge/issues/5",
+      "remote_state": "open",
+      "readiness": "ready",
+      "ownership_mode": "github",
+      "entry_mode": "local_promotion",
+      "source_mode": "local",
+      "parent_issue_number": 1,
+      "milestone_number": 1,
+      "milestone_title": "Workspace foundation initiative",
+      "updated_at": "2026-04-30T04:10:30Z"
+    },
     "establish-shared-typescript-lint-format-and-test-tooling": {
       "slug": "establish-shared-typescript-lint-format-and-test-tooling",
       "kind": "spec",

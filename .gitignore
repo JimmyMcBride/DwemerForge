@@ -8,3 +8,29 @@
 # Brain generated proposal scratch files; durable conclusions should be promoted
 # into .brain/context, docs, or .plan before commit.
 .brain/resources/changes/*-distill-proposal.md
+
+# Node / pnpm
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+release/
+.svelte-kit/
+.vercel/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo

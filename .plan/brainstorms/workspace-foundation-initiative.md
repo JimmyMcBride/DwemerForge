@@ -5,7 +5,7 @@ slug: workspace-foundation-initiative
 status: active
 title: Workspace foundation initiative
 type: brainstorm
-updated_at: "2026-04-30T03:49:12Z"
+updated_at: "2026-04-30T03:59:09Z"
 ---
 
 # Brainstorm: Workspace foundation initiative
@@ -32,31 +32,33 @@ DwemerForge should start as a clean TypeScript monorepo where the web portal, de
 
 ## Constraints
 
-- Do not build the SvelteKit portal or Electron desktop app in this initiative; that belongs to `app-shells`.
+- Do not build real SvelteKit portal or Electron desktop product features in this initiative; shell apps may be created only enough to prove deployment/release workflows.
 - Do not implement real parser, resolver, registry API, or GitHub ingestion behavior yet; this initiative creates their homes and tooling.
 - Keep root scripts simple and useful: install, typecheck, lint, test, format/check.
 - Use TypeScript from the start.
 - Keep public repo clean; do not commit local Brain runtime state.
+- Do not add real production secrets; Vercel and release workflows should document required secrets and use safe placeholders.
 
 ## Open Questions
 
 - Which test runner should be the default for shared packages: Vitest is the likely choice.
 - Which linter/formatter stack should be used: ESLint + Prettier is conservative; Biome is simpler but less common with SvelteKit/Electron.
-- Should GitHub Actions be included now or in a later `ci-foundation` slice?
+- How much CI/deployment skeleton belongs here versus `app-shells`: include path-aware workflow files and shell verification, but keep real release signing and deployment hardening for later.
 ## Ideas
 
-- `workspace-foundation` should be one initiative with three specs: root pnpm workspace, shared tooling, and package boundary scaffolds.
+- `workspace-foundation` should be one initiative with four specs: root pnpm workspace, shared tooling, package boundary scaffolds, and shell deployment/release workflow skeleton.
 - It should leave `apps/web` and `apps/desktop` as planned directories or minimal placeholders only; framework scaffolds come next.
 - Shared packages should be private workspace packages with names like `@dwemerforge/eso-core`, `@dwemerforge/registry`, `@dwemerforge/providers`, and `@dwemerforge/ui`.
 - Root scripts should delegate through workspaces and be usable before apps exist.
 - Initial verification should be `pnpm install`, `pnpm typecheck`, `pnpm test`, and `pnpm lint` once implemented.
+- Deployment/release skeleton should make web and desktop independent: Vercel only builds `apps/web` on web/shared changes, desktop release workflow only builds on desktop/shared changes or explicit tags/manual dispatch.
 
 ## Raw Notes
 
 - We want package boundaries before feature code because desktop and web both need registry schemas and manifest/dependency logic.
 - The first implementation can ship tiny package exports and placeholder tests to prove the workspace works.
 - App shell scaffolding should come immediately after this initiative, but not be mixed into it.
-- CI can be included if cheap, but should not block getting the monorepo shape in place.
+- CI/deployment skeleton can be included after package/app boundaries exist, but should not pull in signing, notarization, or production deployment secrets.
 
 ## Refinement
 
@@ -75,7 +77,7 @@ Small, first implementation initiative. Target one short branch/PR. No app UI, n
 ### Remaining Open Questions
 
 - ESLint + Prettier vs Biome.
-- Whether to include GitHub Actions now.
+- Whether to include real GitHub Actions now: yes for skeleton/path filters, no for signing/release hardening.
 - Whether placeholders should be empty packages or packages with minimal exported stubs/tests.
 
 ### Candidate Approaches
@@ -90,10 +92,10 @@ Use tooling-first. It gives enough structure to validate the monorepo without mi
 
 ## Specs
 
-- Initialize pnpm monorepo workspace.
-- Establish shared TypeScript, lint, format, and test tooling.
-- Scaffold shared package boundaries.
-
+- Initialize pnpm monorepo workspace
+- Establish shared TypeScript, lint, format, and test tooling
+- Scaffold shared package boundaries
+- Add path-aware web deploy and desktop release workflow skeletons
 ## Challenge
 
 ### Rabbit Holes
@@ -102,6 +104,7 @@ Use tooling-first. It gives enough structure to validate the monorepo without mi
 - Over-designing build orchestration with Turborepo/Nx before the repo has real packages.
 - Adding database/auth/storage decisions in the first initiative.
 - Spending time on final UI style before domain package contracts exist.
+- Real signing/notarization or Vercel production secret setup before shell apps exist.
 
 ### No-Gos
 
@@ -110,12 +113,15 @@ Use tooling-first. It gives enough structure to validate the monorepo without mi
 - No addon installer implementation.
 - No ESOUI or external addon database integration.
 - No committed local runtime state or credentials.
+- No real release signing/notarization setup.
 
 ### Assumptions
 
 - `pnpm` is acceptable as the package manager.
 - TypeScript, Vitest, and a conservative lint/format setup are enough for the first pass.
 - Workspace package names will use the `@dwemerforge/*` scope.
+- GitHub Actions path filters are the right first mechanism for monorepo release separation.
+- Vercel should be configured with `apps/web` as root directory and ignored-build behavior for non-web changes.
 
 ### Likely Overengineering
 

@@ -1,0 +1,13 @@
+node_modules/
+.brain/
+.plan/
+AGENTS.md
+docs/project-*.md
+dist/
+build/
+out/
+release/
+.svelte-kit/
+.vercel/
+coverage/
+pnpm-lock.yaml

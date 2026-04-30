@@ -25,4 +25,4 @@ Product pivot on 2026-04-30: design DwemerForge as an independent addon registry
 
 Roadmap solidified on 2026-04-30: use a monorepo with `apps/web`, `apps/desktop`, and shared packages for ESO core parsing/resolution, registry schemas, provider contracts, and optional shared UI. Next implementation step is monorepo scaffolding before app-specific features.
 
-Repository publication update on 2026-04-30: project is being published to GitHub as `JimmyMcBride/DwemerForge` with MIT license. Roadmap now includes recommended initiatives under each phase.
+Repository publication update on 2026-04-30: project is published to GitHub as `JimmyMcBride/DwemerForge` with MIT license. Plan source mode and story backend are set to `github`. Roadmap includes recommended initiatives under each phase.

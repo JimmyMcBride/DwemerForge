@@ -10,8 +10,10 @@ function createMainWindow(): BrowserWindow {
     title: "DwemerForge",
     width: 1120,
     webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
       preload: join(__dirname, "../preload/index.js"),
-      sandbox: false
+      sandbox: true
     }
   });
 

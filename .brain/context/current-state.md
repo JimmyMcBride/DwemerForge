@@ -26,3 +26,5 @@ Product pivot on 2026-04-30: design DwemerForge as an independent addon registry
 Roadmap solidified on 2026-04-30: use a monorepo with `apps/web`, `apps/desktop`, and shared packages for ESO core parsing/resolution, registry schemas, provider contracts, and optional shared UI. Next implementation step is monorepo scaffolding before app-specific features.
 
 Repository publication update on 2026-04-30: project is published to GitHub as `JimmyMcBride/DwemerForge` with MIT license. Plan source mode and story backend are set to `github`. Roadmap includes recommended initiatives under each phase.
+
+First GitHub-backed initiative created on 2026-04-30: `workspace-foundation` as issue #1 with spec issues #2 (`Initialize pnpm monorepo workspace`), #3 (`Establish shared TypeScript, lint, format, and test tooling`), and #4 (`Scaffold shared package boundaries`). Source brainstorm: `.plan/brainstorms/workspace-foundation-initiative.md`.
